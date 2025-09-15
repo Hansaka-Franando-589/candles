@@ -1,0 +1,63 @@
+/* =================== Page Background =================== */
+body.candles-page {
+  margin: 0;
+  background: #0b1a2d; /* deep dark blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* =================== Candles =================== */
+#candles-container {
+  display: flex;
+  gap: 12px;
+  align-items: center; /* baseline in middle */
+  justify-content: center;
+  height: 500px;
+  position: relative;
+}
+
+/* base candle style */
+.candle {
+  position: relative;
+  width: 14px;
+  background: #444;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+/* green = goes UP */
+.candle.green {
+  background: #27ae60;
+  opacity: 1;
+  height: var(--body-height, 80px);
+  transform: translateY(calc(-1 * var(--body-height, 80px)));
+}
+.candle.green::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: var(--wick-height, 40px);
+  background: #27ae60;
+}
+
+/* red = goes DOWN */
+.candle.red {
+  background: #e74c3c;
+  opacity: 1;
+  height: var(--body-height, 80px);
+  transform: translateY(0);
+}
+.candle.red::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: var(--wick-height, 40px);
+  background: #e74c3c;
+}
